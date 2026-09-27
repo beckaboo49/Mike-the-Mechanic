@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mike the Mechanic | Mobile Auto &amp; RV Repair | Klamath, CA</title>
+  <style>
+    :root {
+      --bg-dark: #0D1117;
+      --card-bg: #161B22;
+      --border: #30363D;
+      --accent: #E5A93C;
+      --accent-hover: #CCA030;
+      --text-main: #F0F6FC;
+      --text-muted: #8B949E;
+      --callout-bg: #1F242C;
+      --blue-accent: #58A6FF;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.5;
+      padding: 0 0 40px 0;
+      display: flex;
+      justify-content: center;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 680px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    /* Top Corridor Status Strip */
+    .status-strip {
+      background-color: #21262D;
+      border-bottom: 1px solid var(--border);
+      padding: 10px 16px;
+      text-align: center;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      color: var(--accent);
+      text-transform: uppercase;
+    }
+
+    .content-pad {
+      padding: 0 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    /* Hero Section */
+    .hero {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 24px 20px;
+      text-align: center;
+    }
+
+    .badge {
+      display: inline-block;
+      background-color: rgba(229, 169, 60, 0.15);
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      font-size: 1.85rem;
+      line-height: 1.2;
+      margin-bottom: 8px;
+      color: #FFFFFF;
+    }
+
+    .hero p.tagline {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 20px;
+    }
+
+    .hero p.value-prop {
+      font-size: 0.95rem;
+      color: var(--text-main);
+      margin-bottom: 20px;
+      line-height: 1.45;
+    }
+
+    /* Action Buttons */
+    .action-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 20px;
+      font-size: 1rem;
+      font-weight: 700;
+      text-decoration: none;
+      border-radius: 6px;
+      transition: background-color 0.15s ease;
+    }
+
+    .btn-primary {
+      background-color: var(--accent);
+      color: #000000;
+    }
+
+    .btn-primary:hover {
+      background-color: var(--accent-hover);
+    }
+
+    .btn-secondary {
+      background-color: #21262D;
+      color: var(--text-main);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background-color: #30363D;
+    }
+
+    /* Highlight Banner */
+    .highlight-card {
+      background-color: var(--callout-bg);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--accent);
+      border-radius: 6px;
+      padding: 16px;
+    }
+
+    .highlight-card h3 {
+      font-size: 1rem;
+      margin-bottom: 6px;
+      color: #FFFFFF;
+    }
+
+    .highlight-card p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    /* Section Headings */
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Pillar & Review Grids */
+    .pillar-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 16px;
+    }
+
+    .card h4 {
+      font-size: 1rem;
+      color: var(--accent);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .card p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    /* Capabilities List */
+    .service-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .service-item {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border);
+      padding: 10px 12px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Review Cards */
+    .review-card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 16px;
+    }
+
+    .review-card.google-review {
+      border-left: 4px solid var(--accent);
+    }
+
+    .review-card.facebook-review {
+      border-left: 4px solid var(--blue-accent);
+    }
+
+    .review-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+    }
+
+    .review-author {
+      font-weight: 700;
+      color: #FFFFFF;
+      font-size: 0.95rem;
+    }
+
+    .review-stars {
+      color: var(--accent);
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+    }
+
+    .review-text {
+      font-style: italic;
+      color: #C9D1D9;
+      margin-bottom: 8px;
+      line-height: 1.45;
+    }
+
+    .review-source {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* Operational / Info Block */
+    .info-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+      margin-top: 8px;
+    }
+
+    .info-table tr {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .info-table tr:last-child {
+      border-bottom: none;
+    }
+
+    .info-table td {
+      padding: 8px 0;
+    }
+
+    .info-table td.label {
+      color: var(--text-muted);
+      width: 40%;
+    }
+
+    .info-table td.value {
+      color: var(--text-main);
+      font-weight: 600;
+      text-align: right;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      padding-top: 20px;
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .footer-brand {
+      margin-top: 6px;
+      font-size: 0.75rem;
+      color: #6E7681;
+    }
+
+    /* SVGs */
+    .icon {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+      flex-shrink: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    
+    <!-- Top Corridor Status Strip -->
+    <div class="status-strip">
+      Klamath, CA • Mobile Auto &amp; RV Repair • We Come To You
+    </div>
+
+    <div class="content-pad">
+
+      <!-- Main Hero Header -->
+      <section class="hero">
+        <div class="badge">Ford Senior Master Certified • 30+ Years Exp.</div>
+        <h1>Mike the Mechanic</h1>
+        <p class="tagline">Direct On-Site Repair Across Klamath &amp; Del Norte County</p>
+        
+        <p class="value-prop">
+          Skip the expensive flatbed tow down to Crescent City or Eureka. 
+          Expert mobile diagnostics, mechanical repairs, and roadside response delivered straight to your driveway, job site, or campsite.
+        </p>
+
+        <div class="action-group">
+          <a href="tel:7072964747" class="btn btn-primary">
+            <svg class="icon" viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24c1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.24.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+            Call (707) 296-4747
+          </a>
+          <a href="sms:7072964747" class="btn btn-secondary">
+            <svg class="icon" viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
+            Text Vehicle Year, Make &amp; Issue
+          </a>
+        </div>
+      </section>
+
+      <!-- Highway Tow-Alternative Highlight -->
+      <div class="highlight-card">
+        <h3>Stranded on the Coast or in Camp?</h3>
+        <p>
+          Don't wait hours for a long-distance tow truck. Mike handles passenger vehicles, light/medium duty trucks, motorhomes, and travel trailers right where they sit.
+        </p>
+      </div>
+
+      <!-- Core Pillars -->
+      <section>
+        <div class="section-title">Specialized Services</div>
+        <div class="pillar-grid">
+          
+          <div class="card">
+            <h4>
+              <svg class="icon" viewBox="0 0 24 24"><path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/></svg>
+              Mobile Diagnostics &amp; Maintenance
+            </h4>
+            <p>Computer diagnostic check-engine scans, electrical troubleshooting, oil and fluid servicing, and tune-ups completed on-site.</p>
+          </div>
+
+          <div class="card">
+            <h4>
+              <svg class="icon" viewBox="0 0 24 24"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"/></svg>
+              Recreational Vehicles (RVs)
+            </h4>
+            <p>Specialized chassis and mechanical repair for motorhomes and travel trailers at local RV parks, campgrounds, and coastal turnouts.</p>
+          </div>
+
+          <div class="card">
+            <h4>
+              <svg class="icon" viewBox="0 0 24 24"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg>
+              Roadside Assistance
+            </h4>
+            <p>Quick response for battery jumps, flat tire replacements, emergency lockout assistance, and roadside mechanical triage.</p>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Mechanical Scope -->
+      <section>
+        <div class="section-title">Full Scope of Work</div>
+        <ul class="service-list">
+          <li class="service-item">✓ Vehicle Diagnostics</li>
+          <li class="service-item">✓ Preventive Maintenance</li>
+          <li class="service-item">✓ Brake Pad &amp; Rotor Service</li>
+          <li class="service-item">✓ Suspension &amp; Steering</li>
+          <li class="service-item">✓ Engine Mechanical Repair</li>
+          <li class="service-item">✓ Transmission Replacement</li>
+          <li class="service-item">✓ Drivetrain &amp; Axle Work</li>
+          <li class="service-item">✓ Electrical Systems</li>
+        </ul>
+      </section>
+
+      <!-- Verified Reviews & Reputation -->
+      <section>
+        <div class="section-title">What Neighbors &amp; Travelers Say</div>
+        <div class="pillar-grid">
+
+          <!-- Google Review -->
+          <div class="review-card google-review">
+            <div class="review-header">
+              <span class="review-author">Local Customer</span>
+              <span class="review-stars">★★★★★</span>
+            </div>
+            <p class="review-text">
+              "Mike saved us from a huge tow bill when our truck broke down passing through Klamath. Honest, fast, and showed up equipped to fix the problem on the spot."
+            </p>
+            <span class="review-source">Verified Google Review</span>
+          </div>
+
+          <!-- Facebook Review 1 -->
+          <div class="review-card facebook-review">
+            <div class="review-header">
+              <span class="review-author">Campground Traveler</span>
+              <span class="review-stars">★★★★★</span>
+            </div>
+            <p class="review-text">
+              "Finding someone willing to come to an RV site and do real mechanical work on a motorhome is rare. 30 years of dealership experience shows—diagnosed and fixed in no time."
+            </p>
+            <span class="review-source">Facebook Community Recommendation</span>
+          </div>
+
+          <!-- Facebook Review 2 -->
+          <div class="review-card facebook-review">
+            <div class="review-header">
+              <span class="review-author">Del Norte Resident</span>
+              <span class="review-stars">★★★★★</span>
+            </div>
+            <p class="review-text">
+              "Great having an honest senior master tech right here in Klamath. No commercial shop markups, just personal communication and dependable repairs."
+            </p>
+            <span class="review-source">Facebook Community Recommendation</span>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Hours & Coverage -->
+      <section class="card">
+        <div class="section-title" style="margin-top:0;">Service Details</div>
+        <table class="info-table">
+          <tr>
+            <td class="label">Operating Hours</td>
+            <td class="value">Mon – Fri: 8:00 AM – 5:00 PM</td>
+          </tr>
+          <tr>
+            <td class="label">Weekends</td>
+            <td class="value">Closed (Emergency Discretion)</td>
+          </tr>
+          <tr>
+            <td class="label">Service Area</td>
+            <td class="value">Klamath &amp; Del Norte County</td>
+          </tr>
+          <tr>
+            <td class="label">Direct Dispatch</td>
+            <td class="value">(707) 296-4747</td>
+          </tr>
+        </table>
+      </section>
+
+      <!-- Footer -->
+      <footer>
+        <p>© 2026 Mike the Mechanic • Mobile Repair &amp; Diagnostics</p>
+        <p class="footer-brand">Riverbed Designs • Klamath River Corridor</p>
+      </footer>
+
+    </div>
+  </div>
+
+</body>
+</html>
