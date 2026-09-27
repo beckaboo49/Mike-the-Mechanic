@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mike the Mechanic | Mobile Auto &amp; RV Repair | Klamath, CA</title>
+  <title>Mike the Mechanic | Mobile Auto &amp; RV Repair | Del Norte &amp; Orick</title>
   <style>
     :root {
       --bg-dark: #0D1117;
@@ -15,6 +15,7 @@
       --text-muted: #8B949E;
       --callout-bg: #1F242C;
       --blue-accent: #58A6FF;
+      --badge-bg: #21262D;
     }
 
     * {
@@ -68,6 +69,29 @@
       border-radius: 8px;
       padding: 24px 20px;
       text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .logo-container {
+      width: 110px;
+      height: 110px;
+      margin-bottom: 16px;
+      border-radius: 50%;
+      border: 2px solid var(--accent);
+      background-color: #000000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    }
+
+    .logo-container svg {
+      width: 100%;
+      height: 100%;
+      display: block;
     }
 
     .badge {
@@ -86,14 +110,14 @@
     .hero h1 {
       font-size: 1.85rem;
       line-height: 1.2;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
       color: #FFFFFF;
     }
 
     .hero p.tagline {
       color: var(--text-muted);
       font-size: 0.95rem;
-      margin-bottom: 20px;
+      margin-bottom: 16px;
     }
 
     .hero p.value-prop {
@@ -105,22 +129,37 @@
 
     /* Action Buttons */
     .action-group {
+      width: 100%;
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 12px;
     }
 
     .btn {
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 10px;
       padding: 14px 20px;
-      font-size: 1rem;
-      font-weight: 700;
       text-decoration: none;
       border-radius: 6px;
       transition: background-color 0.15s ease;
+    }
+
+    .btn-main-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    .btn-subtext {
+      font-size: 0.8rem;
+      font-weight: 400;
+      opacity: 0.85;
+      margin-top: 2px;
     }
 
     .btn-primary {
@@ -142,6 +181,19 @@
       background-color: #30363D;
     }
 
+    .btn-tertiary {
+      background-color: transparent;
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+      padding: 10px 16px;
+      font-size: 0.85rem;
+    }
+
+    .btn-tertiary:hover {
+      color: #FFFFFF;
+      border-color: #6E7681;
+    }
+
     /* Highlight Banner */
     .highlight-card {
       background-color: var(--callout-bg);
@@ -160,6 +212,32 @@
     .highlight-card p {
       font-size: 0.9rem;
       color: var(--text-muted);
+      line-height: 1.45;
+    }
+
+    /* Community Discount Card */
+    .discount-card {
+      background-color: #121E2C;
+      border: 1px solid #1F4263;
+      border-left: 4px solid var(--blue-accent);
+      border-radius: 6px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .discount-card h3 {
+      font-size: 0.98rem;
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .discount-card p {
+      font-size: 0.88rem;
+      color: #C9D1D9;
       line-height: 1.4;
     }
 
@@ -224,7 +302,7 @@
       gap: 8px;
     }
 
-    /* Review Cards */
+    /* Verified Review Cards */
     .review-card {
       background-color: var(--card-bg);
       border: 1px solid var(--border);
@@ -244,13 +322,22 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
     }
 
-    .review-author {
+    .review-source-tag {
       font-weight: 700;
-      color: #FFFFFF;
-      font-size: 0.95rem;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .google-tag {
+      color: var(--accent);
+    }
+
+    .facebook-tag {
+      color: var(--blue-accent);
     }
 
     .review-stars {
@@ -262,15 +349,15 @@
     .review-text {
       font-style: italic;
       color: #C9D1D9;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
       line-height: 1.45;
+      font-size: 0.9rem;
     }
 
-    .review-source {
-      font-size: 0.75rem;
+    .review-author {
+      font-size: 0.8rem;
       color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
+      text-align: right;
     }
 
     /* Operational / Info Block */
@@ -290,18 +377,23 @@
     }
 
     .info-table td {
-      padding: 8px 0;
+      padding: 10px 0;
     }
 
     .info-table td.label {
       color: var(--text-muted);
-      width: 40%;
+      width: 36%;
     }
 
     .info-table td.value {
       color: var(--text-main);
       font-weight: 600;
       text-align: right;
+    }
+
+    .info-table td.value a {
+      color: var(--accent);
+      text-decoration: none;
     }
 
     /* Footer */
@@ -334,59 +426,122 @@
     
     <!-- Top Corridor Status Strip -->
     <div class="status-strip">
-      Klamath, CA • Mobile Auto &amp; RV Repair • We Come To You
+      Del Norte County &amp; Orick • Mobile Auto &amp; RV Repair • We Come To You
     </div>
 
     <div class="content-pad">
 
       <!-- Main Hero Header -->
       <section class="hero">
+        
+        <!-- Official Logo Artwork -->
+        <div class="logo-container" aria-label="Mike the Mechanic Logo">
+          <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="250" cy="250" r="240" fill="#1C1E22" stroke="#4A4E57" stroke-width="8"/>
+            <circle cx="250" cy="250" r="195" fill="#2C2F36" stroke="#4A4E57" stroke-width="4"/>
+            <!-- MTM Top Curved Text -->
+            <path id="curveTop" d="M 125 150 A 170 170 0 0 1 375 150" fill="none"/>
+            <text fill="#FFFFFF" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="52" font-weight="900" letter-spacing="14">
+              <textPath href="#curveTop" startOffset="50%" text-anchor="middle">MTM</textPath>
+            </text>
+            <!-- Crossed Wrenches -->
+            <g transform="translate(250, 250)">
+              <!-- Wrench 1 (Top-Left to Bottom-Right) -->
+              <g transform="rotate(45)">
+                <path d="M -16 -130 L 16 -130 L 16 130 L -16 130 Z" fill="#DCE1E8"/>
+                <path d="M 0 -130 C 40 -130 48 -175 18 -185 C -2 -192 -26 -170 -26 -150 C -26 -130 -12 -130 0 -130 Z" fill="#DCE1E8"/>
+                <circle cx="0" cy="-160" r="16" fill="#2C2F36"/>
+                <path d="M 0 130 C 40 130 48 175 18 185 C -2 192 -26 170 -26 150 C -26 130 -12 130 0 130 Z" fill="#DCE1E8"/>
+                <circle cx="0" cy="160" r="16" fill="#2C2F36"/>
+              </g>
+              <!-- Wrench 2 (Top-Right to Bottom-Left) -->
+              <g transform="rotate(-45)">
+                <path d="M -16 -130 L 16 -130 L 16 130 L -16 130 Z" fill="#CBD1D8" stroke="#1C1E22" stroke-width="3"/>
+                <path d="M 0 -130 C 40 -130 48 -175 18 -185 C -2 -192 -26 -170 -26 -150 C -26 -130 -12 -130 0 -130 Z" fill="#CBD1D8" stroke="#1C1E22" stroke-width="2"/>
+                <circle cx="0" cy="-160" r="16" fill="#2C2F36"/>
+                <path d="M 0 130 C 40 130 48 175 18 185 C -2 192 -26 170 -26 150 C -26 130 -12 130 0 130 Z" fill="#CBD1D8" stroke="#1C1E22" stroke-width="2"/>
+                <circle cx="0" cy="160" r="16" fill="#2C2F36"/>
+              </g>
+            </g>
+            <!-- Bottom Curved Text -->
+            <path id="curveBottom" d="M 90 320 A 190 190 0 0 0 410 320" fill="none"/>
+            <text fill="#FFFFFF" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="34" font-weight="800" letter-spacing="6">
+              <textPath href="#curveBottom" startOffset="50%" text-anchor="middle">MIKE THE MECHANIC</textPath>
+            </text>
+          </svg>
+        </div>
+
         <div class="badge">Ford Senior Master Certified • 30+ Years Exp.</div>
         <h1>Mike the Mechanic</h1>
-        <p class="tagline">Direct On-Site Repair Across Klamath &amp; Del Norte County</p>
+        <p class="tagline">Mobile Auto &amp; RV Repair • On-Site Diagnostics &amp; Roadside</p>
         
         <p class="value-prop">
-          Skip the expensive flatbed tow down to Crescent City or Eureka. 
-          Expert mobile diagnostics, mechanical repairs, and roadside response delivered straight to your driveway, job site, or campsite.
+          Skip the expensive tow to Crescent City or Eureka. 
+          Expert mobile mechanical repairs, engine diagnostics, and roadside service brought straight to your driveway, job site, or campsite.
         </p>
 
         <div class="action-group">
+          <!-- Primary Call Button -->
           <a href="tel:7072964747" class="btn btn-primary">
-            <svg class="icon" viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24c1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.24.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
-            Call (707) 296-4747
+            <div class="btn-main-row">
+              <svg class="icon" viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24c1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.24.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+              <span>Call (707) 296-4747</span>
+            </div>
+            <span class="btn-subtext">Tap to dial direct for dispatch &amp; quotes</span>
           </a>
-          <a href="sms:7072964747" class="btn btn-secondary">
-            <svg class="icon" viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
-            Text Vehicle Year, Make &amp; Issue
+
+          <!-- Pre-filled SMS Button -->
+          <a href="sms:+17072964747?&body=Hi%20Mike,%20I'm%20contacting%20you%20from%20your%20website.%20My%20vehicle%20is%20a%20(Year/Make/Model):%20...%20Issue/Location:%20..." class="btn btn-secondary">
+            <div class="btn-main-row">
+              <svg class="icon" viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
+              <span>Text Vehicle Details</span>
+            </div>
+            <span class="btn-subtext">Prefills vehicle year, make &amp; issue for fast quoting</span>
+          </a>
+
+          <!-- Direct Email Button -->
+          <a href="mailto:mikethemechanicmobileservice@gmail.com" class="btn btn-tertiary">
+            ✉ Email: mikethemechanicmobileservice@gmail.com
           </a>
         </div>
       </section>
 
       <!-- Highway Tow-Alternative Highlight -->
       <div class="highlight-card">
-        <h3>Stranded on the Coast or in Camp?</h3>
+        <h3>Stranded on the side of the 101 or at camp?</h3>
         <p>
-          Don't wait hours for a long-distance tow truck. Mike handles passenger vehicles, light/medium duty trucks, motorhomes, and travel trailers right where they sit.
+          Don't wait hours for a long-distance flatbed. Mike handles passenger cars, light/medium duty trucks, motorhomes, and travel trailers right where they sit across Del Norte County and Orick.
+        </p>
+      </div>
+
+      <!-- Tribal Member & Military Veteran Discount Card -->
+      <div class="discount-card">
+        <h3>
+          <svg class="icon" style="fill: var(--blue-accent);" viewBox="0 0 24 24"><path d="M12 2L1 21h22L12 2zm0 3.84L19.5 19H4.5L12 5.84zM11 10h2v4h-2v-4zm0 6h2v2h-2v-2z"/></svg>
+          Community Discounts Available
+        </h3>
+        <p>
+          <strong>Are you a tribal member? A military Veteran?</strong> We offer dedicated discounts for automotive services and mechanical repairs. Mention your tribal affiliation or military service when you call or text!
         </p>
       </div>
 
       <!-- Core Pillars -->
       <section>
-        <div class="section-title">Specialized Services</div>
+        <div class="section-title">Specialized Mobile Services</div>
         <div class="pillar-grid">
           
           <div class="card">
             <h4>
               <svg class="icon" viewBox="0 0 24 24"><path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/></svg>
-              Mobile Diagnostics &amp; Maintenance
+              Mobile Diagnostics &amp; Preventive Maintenance
             </h4>
-            <p>Computer diagnostic check-engine scans, electrical troubleshooting, oil and fluid servicing, and tune-ups completed on-site.</p>
+            <p>Full engine diagnostics, check-engine scans, electrical troubleshooting, oil and fluid servicing, and scheduled tune-ups completed on-site.</p>
           </div>
 
           <div class="card">
             <h4>
               <svg class="icon" viewBox="0 0 24 24"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"/></svg>
-              Recreational Vehicles (RVs)
+              Recreational Vehicles (RVs) &amp; Campers
             </h4>
             <p>Specialized chassis and mechanical repair for motorhomes and travel trailers at local RV parks, campgrounds, and coastal turnouts.</p>
           </div>
@@ -394,9 +549,9 @@
           <div class="card">
             <h4>
               <svg class="icon" viewBox="0 0 24 24"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg>
-              Roadside Assistance
+              Roadside Assistance &amp; Triage
             </h4>
-            <p>Quick response for battery jumps, flat tire replacements, emergency lockout assistance, and roadside mechanical triage.</p>
+            <p>Quick response for battery jumps, flat tire replacements, emergency lockouts, and roadside triage along Highway 101.</p>
           </div>
 
         </div>
@@ -406,56 +561,44 @@
       <section>
         <div class="section-title">Full Scope of Work</div>
         <ul class="service-list">
-          <li class="service-item">✓ Vehicle Diagnostics</li>
-          <li class="service-item">✓ Preventive Maintenance</li>
-          <li class="service-item">✓ Brake Pad &amp; Rotor Service</li>
+          <li class="service-item">✓ Vehicle Diagnostic</li>
+          <li class="service-item">✓ Preventive Services</li>
+          <li class="service-item">✓ Brakes &amp; Rotors</li>
           <li class="service-item">✓ Suspension &amp; Steering</li>
-          <li class="service-item">✓ Engine Mechanical Repair</li>
+          <li class="service-item">✓ Engine Repair</li>
           <li class="service-item">✓ Transmission Replacement</li>
-          <li class="service-item">✓ Drivetrain &amp; Axle Work</li>
-          <li class="service-item">✓ Electrical Systems</li>
+          <li class="service-item">✓ Drivetrain Repair</li>
+          <li class="service-item">✓ Electrical Repair</li>
         </ul>
       </section>
 
-      <!-- Verified Reviews & Reputation -->
+      <!-- Verified Real Reviews -->
       <section>
-        <div class="section-title">What Neighbors &amp; Travelers Say</div>
+        <div class="section-title">Verified Customer Reviews</div>
         <div class="pillar-grid">
 
           <!-- Google Review -->
           <div class="review-card google-review">
             <div class="review-header">
-              <span class="review-author">Local Customer</span>
+              <span class="review-source-tag google-tag">Google Review</span>
               <span class="review-stars">★★★★★</span>
             </div>
             <p class="review-text">
-              "Mike saved us from a huge tow bill when our truck broke down passing through Klamath. Honest, fast, and showed up equipped to fix the problem on the spot."
+              "Me ke aloha to Mike for offering such a service to my wahine car. The timing chains needed to be replaced and the work that Mike did was true. Not only did he send text messages with updates of the work he also sent pics of all the parts he removed to help show the process. He offered so much to get the car up and running and even helped to put in an O2 sensor I needed to put in. He really is a mechanic who knows his craft and is very gracious and humble — offered to pick me up instead of me walking, which he did pick me up!! If you need not only knowledgeable master mechanic, but a man who is a gracious spirit reach out to Mike the mechanic and help support his awesome business. Mahalo nui loa Michael and all the best in your new business!!"
             </p>
-            <span class="review-source">Verified Google Review</span>
+            <div class="review-author">— Verified Google Review</div>
           </div>
 
-          <!-- Facebook Review 1 -->
+          <!-- Facebook Review -->
           <div class="review-card facebook-review">
             <div class="review-header">
-              <span class="review-author">Campground Traveler</span>
+              <span class="review-source-tag facebook-tag">Facebook Recommendation</span>
               <span class="review-stars">★★★★★</span>
             </div>
             <p class="review-text">
-              "Finding someone willing to come to an RV site and do real mechanical work on a motorhome is rare. 30 years of dealership experience shows—diagnosed and fixed in no time."
+              "Mike is real pro! Last week Aug 29 I spoke to Mike and he was able to come over do the repairs on Sept 3rd! He was here on time! If you want someone to come to your location, contact Mike... he is highly recommended!"
             </p>
-            <span class="review-source">Facebook Community Recommendation</span>
-          </div>
-
-          <!-- Facebook Review 2 -->
-          <div class="review-card facebook-review">
-            <div class="review-header">
-              <span class="review-author">Del Norte Resident</span>
-              <span class="review-stars">★★★★★</span>
-            </div>
-            <p class="review-text">
-              "Great having an honest senior master tech right here in Klamath. No commercial shop markups, just personal communication and dependable repairs."
-            </p>
-            <span class="review-source">Facebook Community Recommendation</span>
+            <div class="review-author">— Facebook Community Member</div>
           </div>
 
         </div>
@@ -470,16 +613,24 @@
             <td class="value">Mon – Fri: 8:00 AM – 5:00 PM</td>
           </tr>
           <tr>
-            <td class="label">Weekends</td>
-            <td class="value">Closed (Emergency Discretion)</td>
+            <td class="label">Saturday &amp; Sunday</td>
+            <td class="value">Closed</td>
           </tr>
           <tr>
             <td class="label">Service Area</td>
-            <td class="value">Klamath &amp; Del Norte County</td>
+            <td class="value">Del Norte County &amp; Orick</td>
           </tr>
           <tr>
             <td class="label">Direct Dispatch</td>
-            <td class="value">(707) 296-4747</td>
+            <td class="value"><a href="tel:7072964747">(707) 296-4747</a></td>
+          </tr>
+          <tr>
+            <td class="label">Email Contact</td>
+            <td class="value" style="font-size:0.78rem;"><a href="mailto:mikethemechanicmobileservice@gmail.com">mikethemechanicmobileservice@gmail.com</a></td>
+          </tr>
+          <tr>
+            <td class="label">Discounts</td>
+            <td class="value" style="color:var(--accent);">Tribal Members &amp; Military Veterans</td>
           </tr>
         </table>
       </section>
@@ -495,3 +646,10 @@
 
 </body>
 </html>
+ 
+  
+  
+ 
+   
+ 
+  
